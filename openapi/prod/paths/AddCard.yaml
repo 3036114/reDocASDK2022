@@ -1,0 +1,10 @@
+paths:
+  AddCard:
+    post: 
+      summary: AddCard
+      description: "Метод инициирует привязку карты к покупателю. В случае успешной привязки переадресует клиента на Success Add Card URL, в противном
+      случае на Fail Add Card URL. Можно использовать форму банка, возможно заменить на кастомную форму."
+      requestBody: 
+        content: 
+          application/json:
+            schema: 

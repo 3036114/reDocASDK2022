@@ -1,0 +1,9 @@
+paths:
+  QR:
+    post: 
+      summary: QR
+      description: ""
+      requestBody: 
+        content: 
+          application/json:
+            schema:

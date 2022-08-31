@@ -1,0 +1,9 @@
+paths:
+  QrMembersList:
+    post: 
+      summary: QrMembersList
+      description: ""
+      requestBody: 
+        content: 
+          application/json:
+            schema:

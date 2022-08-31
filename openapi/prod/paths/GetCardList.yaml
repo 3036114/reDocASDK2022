@@ -1,0 +1,9 @@
+paths:
+  GetCardList:
+    post: 
+      summary: GetCardList
+      description: ""
+      requestBody: 
+        content: 
+          application/json:
+            schema:

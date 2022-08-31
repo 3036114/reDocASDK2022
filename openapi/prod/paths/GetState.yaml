@@ -1,0 +1,9 @@
+paths:
+  GetState:
+    post: 
+      summary: GetState
+      description: ""
+      requestBody: 
+        content: 
+          application/json:
+            schema:

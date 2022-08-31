@@ -1,0 +1,12 @@
+paths:
+  AttachCard:
+    post: 
+      summary: AttachCard
+      description: "Завершает привязку карты к покупателю. Метод вызывается автоматически
+      после метода AddCard.
+      В случае успешной привязки переадресует клиента на Success Add Card URL в противном
+      случае на Fail Add Card URL."
+      requestBody: 
+        content: 
+          application/json:
+            schema:У меня в пт будет встречка с одним товарищем, я позже отпишусь чем она закончилась.. может нам пошарят ресурс.. 

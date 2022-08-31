@@ -1,0 +1,9 @@
+paths:
+  GetQr:
+    post: 
+      summary: GetQr
+      description: ""
+      requestBody: 
+        content: 
+          application/json:
+            schema:
