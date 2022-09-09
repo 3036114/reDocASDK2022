@@ -1,4 +1,0 @@
-oneOf:
-  - type: object
-  - $ref: TinkoffPay.yaml
-  - $ref: YandexPay.yaml

@@ -139,7 +139,10 @@ properties:
       ⋅ *Заполнить данными последней сохраненной карты. Применяется, если параметр "DefaultCard" не передан, передан с некорректным значением или в значении null.
       3. При реализации подключения оплаты через Yandex Pay Web или Tinkoff Pay Web,
       необходимо обязательно передавать соотвествующие параметры в объекте Data
-    $ref: Data.yaml
+    oneOf:
+      - type: object
+      - $ref: TinkoffPay.yaml
+      - $ref: YandexPay.yaml
   Receipt:
     description: JSON объект с данными чека
     oneOf: 
