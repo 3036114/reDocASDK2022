@@ -18,4 +18,4 @@ paths:
           content: 
             application/json: 
               schema: 
-                $ref: ../components/responses/schemas/PaymentSession.yaml
+                $ref: ../components/responses/schemas/Response.yaml

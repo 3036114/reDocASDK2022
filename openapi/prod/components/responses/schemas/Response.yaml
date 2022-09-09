@@ -54,6 +54,7 @@ properties:
     description: |
       Ссылка на платежную форму
     type: string
+    format: uri
     maxLength: 100
     example: https://securepay.tinkoff.ru/rest/Authorize/1B63Y1
   Message:
