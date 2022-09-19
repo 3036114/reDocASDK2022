@@ -1,80 +1,21 @@
 paths:
   Init:
-    post: 
-      summary: Init
-      description: "Метод инициирует платежную сессию"
-      requestBody: 
+    post:
+      tags:
+        - Методы приема платежей
+      summary: Инициирует платежную сессию
+      description: |
+        Метод инициирует платежную сессию
+      requestBody:
+        required: true
         content: 
           application/json:
-            schema: 
-                type: object
-                required:
-                - TerminalKey
-                - Amount
-                - OrderId
-                - Recurrent
-                - CustomerKey
-                
-                properties:
-                  TerminalKey:
-                    description: Идентификатор терминала. Выдается продавцу банком при заведении терминала
-                    type: string
-                    maxLength: 20
-                    example: "12345678"
-                  Amount:
-                    description: | 
-                      * Сумма в копейках. Например, сумма 3руб. 12коп. это число `312`.
-
-                      * Параметр должен быть равен сумме всех параметров "Amount", переданных в объекте Items. 
-
-                      * Минимальная сумма операции с помощью СБП составляет 10 руб.'
-                    type: number
-                    maxLength: 10
-                    example: 123
-                  OrderId:
-                    description: Идентификатор заказа в системе продавца
-                    type: string
-                    maxLength: 36
-                    example: "1234567"
-                  IP:
-                    description: IP-адрес покупателя
-                    type: string
-                    maxLength: 40
-                  Description:
-                    description: Описание заказа
-                    type: string
-                    maxLength: 250 
-                  Token:
-                    description:  Подпись запроса
-                    type: string
-                    example: "48d4ca825aab2ede06736d3eae099bd56ac97bd1bcdd598aff210f729de4eb21"    
-                  Language:  
-                    description: Язык платежной формы. `ru` — русский `en` — английский. Если не передан, форма откроется на русском языке 
-                    type: string
-                    maxLength: 2
-                  Recurrent:
-                    description: Идентификатор родительского платежа. Для регистрации автоплатежа - обязателен
-                    type: string
-                    maxLength: 1
-                    default: Y
-                  CustomerKey:
-                    description: Идентификатор покупателя в системе продавца. Передается вместе с параметром CardId. См. метод GetCardList. Также необходим для сохранения карт на платежной форме (платежи в один клик). Обязателен если передан параметр Recurrent
-                    type: string
-                    maxLength: 36
-                   
+            schema:
+              $ref: ../components/schemas/PaymentSession.yaml
       responses: 
-        200: 
+        '200':
+          description: OK
           content: 
             application/json: 
               schema: 
-                properties: 
-                  TerminalKey:
-                    type: string
-                  Amount:
-                    type: string
-                  OrderId:
-                    type: string
-                  Success:
-                    type: boolean
-                  Status:
-                    type: string
+                $ref: ../components/responses/schemas/Response.yaml
