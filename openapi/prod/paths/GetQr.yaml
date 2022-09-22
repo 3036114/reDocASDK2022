@@ -1,9 +1,22 @@
 paths:
   GetQr:
-    post: 
+    post:
+      tags:
+        - Методы оплаты по QR
       summary: GetQr
-      description: ""
-      requestBody: 
+      description: |
+        Метод регистрирует QR и возвращает информацию о нем. 
+        Должен быть вызван после вызова метода Init.
+      requestBody:
+        required: true
         content: 
           application/json:
             schema:
+              $ref: ../components/schemas/GetQr.yaml
+      responses: 
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                $ref: ../components/responses/schemas/QrResponse.yaml
