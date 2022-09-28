@@ -43,8 +43,9 @@ paths:
     $ref: ./paths/GetCardList.yaml#/paths/GetCardList
   /RemoveCard:
     $ref: ./paths/RemoveCard.yaml#/paths/RemoveCard
-  /QR:
-    $ref: ./paths/QR.yaml#/paths/QR
+  '/TinkoffPay/{paymentId}/QR':
+    $ref: ./paths/QR.yaml#/paths/TinkoffPay@{paymentId}@QR
+    # $ref: ./paths/QR.yaml#/paths/TinkoffPay/{paymentId}/QR
   /GetQr:
     $ref: ./paths/GetQr.yaml#/paths/GetQr 
   /GetStaticQr:
