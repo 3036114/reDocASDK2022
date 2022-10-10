@@ -13,6 +13,7 @@ properties:
     description: |
       Идентификатор покупателя в системе Продавца
     type: string
+    maxLength: 36
     example: testCustomer1234
   Token:
     description: |
@@ -41,15 +42,16 @@ properties:
     type: string
     default: NO
     example: HOLD
-  IP:
-    description: |
-      IP-адрес запроса
-  ResidentState:
-    description: |
-      Признак резидентности добавляемой карты:
-      Возможные значения:
-      * true - Карта РФ,
-      * false - Карта не РФ,
-      * null - Не специфицируется (универсальная карта)
-    type: boolean
-    example: true
+  # DO IS NOT USE IN ANDROID SDK
+  # IP:
+  #   description: |
+  #     IP-адрес запроса
+  # ResidentState:
+  #   description: |
+  #     Признак резидентности добавляемой карты:
+  #     Возможные значения:
+  #     * true - Карта РФ,
+  #     * false - Карта не РФ,
+  #     * null - Не специфицируется (универсальная карта)
+  #   type: boolean
+  #   example: true
