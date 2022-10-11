@@ -56,3 +56,5 @@ paths:
     $ref: ./paths/GetAddCardState.yaml#/paths/GetAddCardState
   /SubmitRandomAmount:
     $ref: ./paths/SubmitRandomAmount.yaml#/paths/SubmitRandomAmount
+  /Submit3DSAuthorizationV2:
+    $ref: ./paths/Submit3DSAuthorizationV2.yaml#/paths/Submit3DSAuthorizationV2
