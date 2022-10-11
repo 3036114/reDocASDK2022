@@ -34,12 +34,11 @@ paths:
                   type: number
                   maxLength: 20
                   example: 100000
-                CustomerKey:
+                Token:
                   description: |
-                    Идентификатор покупателя в системе Продавца
+                    Подпись запроса
                   type: string
-                  maxLength: 36
-                  example: testCustomer1234
+                  example: 30797e66108934dfa3d841b856fdad227c6b9c46d6a39296e02dc800d86d181e
       responses: 
         '200':
           description: OK
