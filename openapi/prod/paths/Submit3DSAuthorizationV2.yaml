@@ -1,0 +1,103 @@
+paths:
+  Submit3DSAuthorizationV2:
+    post:
+      tags:
+        - Методы приема платежей
+      summary: Submit3DSAuthorizationV2
+      description: |
+        Осуществляет проверку результатов прохождения 3-D Secure v2 и при успешном результате
+        прохождения 3-D Secure v2 подтверждает инициированный платеж.
+        При использовании одностадийной оплаты осуществляет списание денежных средств с карты
+        покупателя.
+        При двухстадийной оплате осуществляет блокировку указанной суммы на карте покупателя.
+      requestBody: 
+        required: true
+        content: 
+          application/json:
+            schema:
+              type: object
+              required:
+                - PaymentId 
+                - TerminalKey
+                - Token
+              properties:
+                PaymentId:
+                  description: |
+                    Идентификатор платежа в системе банка
+                  type: number
+                  maxLength: 20
+                  example: 13660 
+                TerminalKey:
+                  description: |
+                    Идентификатор терминала, выдается Продавцу Банком.
+                  type: string
+                  maxLength: 20
+                  example: testRegressBank
+                Token:
+                  description: |
+                    Подпись запроса
+                  type: string
+                  example: 30797e66108934dfa3d841b856fdad227c6b9c46d6a39296e02dc800d86d181e
+      responses: 
+        '200':
+          description: OK
+          content: 
+            application/json: 
+              schema:
+                type: object
+                required: 
+                  - TerminalKey
+                  - OrderId
+                  - Success
+                  - Status
+                  - PaymentId
+                  - ErrorCode
+                properties: 
+                  TerminalKey:
+                    description: |
+                      Идентификатор терминала. Выдается продавцу банком 
+                      при заведении терминала.
+                    type: string
+                    maxLength: 20
+                    example: TinkoffBankTest
+                  OrderId:
+                    description: |
+                      Идентификатор заказа в системе продавца
+                    type: string
+                    maxLength: 36
+                    example: 21050
+                  Success:
+                    description: |
+                      Выполнение платежа
+                    type: boolean
+                    example: true
+                  Status:
+                    description: |
+                      Статус платежа:
+                      * при успешном сценарии и одностадийном проведении платежа: CONFIRMED
+                      * при успешном сценарии и двухстадийном проведении платежа: AUTHORIZED
+                      * при неуспешном: REJECTED
+                    type: string
+                    maxLength: 20
+                    example: NEW
+                  PaymentId:
+                    description: |
+                      Идентификатор платежа в системе банка
+                    type: number
+                    maxLength: 20
+                    example: 13660
+                  ErrorCode:
+                    description: |
+                      Код ошибки.
+                      Если ошибки не произошло, передайте значение «0»
+                    type: string
+                    maxLength: 20
+                    example: 0
+                  Message:
+                    description: |
+                      Краткое описание ошибки
+                    type: string
+                  Details:
+                    description: |
+                      Подробное описание ошибки
+                    type: string
