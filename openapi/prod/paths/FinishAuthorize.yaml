@@ -1,11 +1,26 @@
 paths:
   FinishAuthorize:
-    post: 
+    post:
+      tags:
+        - Методы приема платежей
       summary: FinishAuthorize
-      description: "Подтверждает инициированный платеж передачей карточных данных. При использовании одностадийного проведения осуществляет списание денежных
-      средств с карты покупателя. При двухстадийном проведении осуществляет блокировку указанной суммы на карте
-      покупателя."
-      requestBody: 
+      description: |
+        Метод подтверждает платеж передачей реквизитов, а также списывает средства 
+        с карты покупателя при одностадийной оплате и блокирует указанную сумму при 
+        двухстадийной. Используется, если у площадки есть сертификация PCI DSS и 
+        собственная платежная форма.
+      requestBody:
+        required: true
         content: 
           application/json:
-            schema: 
+            schema:
+              $ref: ../components/schemas/FinishAuthorize.yaml
+      responses: 
+        '200':
+          description: OK
+          content: 
+            application/json:
+              schema:
+                oneOf:
+                  - $ref: ../components/responses/schemas/extends/Without3DS.yaml
+                  - $ref: ../components/responses/schemas/extends/With3DS.yaml

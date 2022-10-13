@@ -3,7 +3,7 @@ paths:
     post:
       tags:
         - Методы приема платежей
-      summary: Инициирует платежную сессию
+      summary: Init
       description: |
         Метод инициирует платежную сессию
       requestBody:
