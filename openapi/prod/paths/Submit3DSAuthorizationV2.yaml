@@ -1,51 +1,43 @@
 paths:
-  RemoveCard:
+  Submit3DSAuthorizationV2:
     post:
       tags:
-        - Методы работы с привязанными картами и клиентами 
-      summary: RemoveCard
-      description: Удаляет привязанную карту покупателя
+        - Методы приема платежей
+      summary: Submit3DSAuthorizationV2
+      description: |
+        Осуществляет проверку результатов прохождения 3-D Secure v2 и при успешном результате
+        прохождения 3-D Secure v2 подтверждает инициированный платеж.
+        При использовании одностадийной оплаты осуществляет списание денежных средств с карты
+        покупателя.
+        При двухстадийной оплате осуществляет блокировку указанной суммы на карте покупателя.
       requestBody: 
         required: true
         content: 
           application/json:
             schema:
               type: object
-              required: 
+              required:
+                - PaymentId 
                 - TerminalKey
-                - CustomerKey
-                - CardId
                 - Token
-              properties: 
+              properties:
+                PaymentId:
+                  description: |
+                    Идентификатор платежа в системе банка
+                  type: number
+                  maxLength: 20
+                  example: 13660 
                 TerminalKey:
                   description: |
                     Идентификатор терминала, выдается Продавцу Банком.
                   type: string
                   maxLength: 20
                   example: testRegressBank
-                CustomerKey:
-                  description: |
-                    Идентификатор покупателя в системе Продавца
-                  type: string
-                  maxLength: 36
-                  example: testCustomer1234
-                CardId:
-                  description: |
-                    Идентификатор карты в системе Банка
-                  type: string
-                  maxLength: 40
-                  example: 156516516
                 Token:
                   description: |
                     Подпись запроса
                   type: string
                   example: 30797e66108934dfa3d841b856fdad227c6b9c46d6a39296e02dc800d86d181e
-                IP:
-                  description: |
-                    IP-адрес запроса
-                  type: string
-                  maxLength: 40
-                  example: 2011:0db8:85a3:0101:0101:8a2e:0370:7334
       responses: 
         '200':
           description: OK
@@ -55,11 +47,10 @@ paths:
                 type: object
                 required: 
                   - TerminalKey
-                  - CardId
-                  - CustomerKey
-                  - Status
+                  - OrderId
                   - Success
-                  - CardType
+                  - Status
+                  - PaymentId
                   - ErrorCode
                 properties: 
                   TerminalKey:
@@ -69,37 +60,32 @@ paths:
                     type: string
                     maxLength: 20
                     example: TinkoffBankTest
-                  Status:
+                  OrderId:
                     description: |
-                      Статус платежа
-                    type: string
-                    maxLength: 20
-                    example: NEW
-                  CustomerKey:
-                    description: |
-                      Идентификатор покупателя в системе Продавца
+                      Идентификатор заказа в системе продавца
                     type: string
                     maxLength: 36
-                    example: testCustomer1234
-                  CardId:
-                    description: |
-                      Идентификатор карты в системе Банка
-                    type: string
-                    maxLength: 40
-                    example: 156516516
-                  CardType:
-                    description: |
-                      Тип карты:
-                      * карта списания;
-                      * карта пополнения;
-                      * карта пополнения и списания.
-                    type: string
-                    example: 0
+                    example: 21050
                   Success:
                     description: |
                       Выполнение платежа
                     type: boolean
                     example: true
+                  Status:
+                    description: |
+                      Статус платежа:
+                      * при успешном сценарии и одностадийном проведении платежа: CONFIRMED
+                      * при успешном сценарии и двухстадийном проведении платежа: AUTHORIZED
+                      * при неуспешном: REJECTED
+                    type: string
+                    maxLength: 20
+                    example: NEW
+                  PaymentId:
+                    description: |
+                      Идентификатор платежа в системе банка
+                    type: number
+                    maxLength: 20
+                    example: 13660
                   ErrorCode:
                     description: |
                       Код ошибки.
