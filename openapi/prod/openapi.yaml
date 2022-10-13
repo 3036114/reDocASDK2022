@@ -52,3 +52,7 @@ paths:
     $ref: ./paths/GetStaticQr.yaml#/paths/GetStaticQr
   /QrMembersList:
     $ref: ./paths/QrMembersList.yaml#/paths/QrMembersList
+  /GetAddCardState:
+    $ref: ./paths/GetAddCardState.yaml#/paths/GetAddCardState
+  /SubmitRandomAmount:
+    $ref: ./paths/SubmitRandomAmount.yaml#/paths/SubmitRandomAmount
