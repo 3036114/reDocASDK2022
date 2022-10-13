@@ -60,3 +60,5 @@ paths:
     $ref: ./paths/Submit3DSAuthorizationV2.yaml#/paths/Submit3DSAuthorizationV2
   '/TinkoffPay/terminals/{TerminalKey}/status':
     $ref: ./paths/Status.yaml#/paths/TinkoffPay/terminals@{TerminalKey}@status
+  '/TinkoffPay/transactions/{paymentId}/versions/{version}/link':
+    $ref: ./paths/Link.yaml#/paths/TinkoffPay/transactions@{paymentId}@versions@{version}@link
