@@ -58,3 +58,5 @@ paths:
     $ref: ./paths/SubmitRandomAmount.yaml#/paths/SubmitRandomAmount
   /Submit3DSAuthorizationV2:
     $ref: ./paths/Submit3DSAuthorizationV2.yaml#/paths/Submit3DSAuthorizationV2
+  '/TinkoffPay/terminals/{TerminalKey}/status':
+    $ref: ./paths/Status.yaml#/paths/TinkoffPay/terminals@{TerminalKey}@status
