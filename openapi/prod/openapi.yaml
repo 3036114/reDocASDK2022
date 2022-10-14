@@ -62,3 +62,5 @@ paths:
     $ref: ./paths/Status.yaml#/paths/TinkoffPay/terminals@{TerminalKey}@status
   '/TinkoffPay/transactions/{paymentId}/versions/{version}/link':
     $ref: ./paths/Link.yaml#/paths/TinkoffPay/transactions@{paymentId}@versions@{version}@link
+  /Check3dsVersion:
+    $ref: ./paths/Check3dsVersion.yaml#/paths/Check3dsVersion
