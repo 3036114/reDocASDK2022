@@ -100,7 +100,11 @@ paths:
                     example: true
                   Status:
                     description: |
-                      Статус платежа
+                      Статус платежа 
+                      
+                      Получает в ответе 1 из 2 статусов:
+                      * CONFIRMED - Если платеж выполнен
+                      * REJECTED - Если платеж не выполнен
                     type: string
                     maxLength: 20
                     example: NEW
