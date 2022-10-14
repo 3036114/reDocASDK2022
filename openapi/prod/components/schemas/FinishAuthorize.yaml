@@ -95,6 +95,7 @@ properties:
       Не используется и не является обязательным, 
       если передается EncryptedPaymentData
       Пример:
+    example: 
       eyJzaWduYXR1cmUiOiJNRVVDSVFEdjNJS1A5WG9nWml4RytUUm9zZWFDK0RGd3RKd2FtMHVEcm91RUVGZVB6Z0lnYXBFbHhxQ3AwQWtZcVVmTFVMaVNhUjBKWkVQNmg
       4THFqYks5YkJKQnM5d1x1MDAzZCIsInByb3RvY29sVmVyc2lvbiI6IkVDdjEiLCJzaWduZWRNZXNzYWdlIjoie1wiZW5jcnlwdGVkTWVzc2FnZVwiOlwiQW11dm5OYUIralBsa3VKTitrMUZLSDZFcm1VK2lTY052
       L05rR3FFaXIxOHZmSWxkVFJ5L2U4cW5zMXkyanFtcm1acU1JSWNYMUhyTHBxRURpaXkvS3B6SUhNZFllcXRkSVVNOU1tRjNpejU2d2NTZUVVaXU2ODI3QThGcitaYm8xRWtWRjY1TUxRYVY3NlBOUFRndH
