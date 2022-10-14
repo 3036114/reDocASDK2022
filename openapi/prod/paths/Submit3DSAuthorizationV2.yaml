@@ -17,16 +17,16 @@ paths:
             schema:
               type: object
               required:
-                - PaymentId 
+                - crec 
                 - TerminalKey
                 - Token
               properties:
-                PaymentId:
+                crec:
                   description: |
-                    Идентификатор платежа в системе банка
-                  type: number
-                  maxLength: 20
-                  example: 13660 
+                    Закодированный в 64-разрядный код, объект с ключами:
+                    * threeDSServerTransID
+                    * transStatus
+                  type: string
                 TerminalKey:
                   description: |
                     Идентификатор терминала, выдается Продавцу Банком.
@@ -45,47 +45,12 @@ paths:
             application/json: 
               schema:
                 type: object
-                required: 
-                  - TerminalKey
-                  - OrderId
-                  - Success
-                  - Status
-                  - PaymentId
-                  - ErrorCode
                 properties: 
-                  TerminalKey:
-                    description: |
-                      Идентификатор терминала. Выдается продавцу банком 
-                      при заведении терминала.
-                    type: string
-                    maxLength: 20
-                    example: TinkoffBankTest
-                  OrderId:
-                    description: |
-                      Идентификатор заказа в системе продавца
-                    type: string
-                    maxLength: 36
-                    example: 21050
                   Success:
                     description: |
                       Выполнение платежа
                     type: boolean
                     example: true
-                  Status:
-                    description: |
-                      Статус платежа:
-                      * при успешном сценарии и одностадийном проведении платежа: CONFIRMED
-                      * при успешном сценарии и двухстадийном проведении платежа: AUTHORIZED
-                      * при неуспешном: REJECTED
-                    type: string
-                    maxLength: 20
-                    example: NEW
-                  PaymentId:
-                    description: |
-                      Идентификатор платежа в системе банка
-                    type: number
-                    maxLength: 20
-                    example: 13660
                   ErrorCode:
                     description: |
                       Код ошибки.

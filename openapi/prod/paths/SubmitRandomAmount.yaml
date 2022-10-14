@@ -82,12 +82,6 @@ paths:
                     type: string
                     maxLength: 40
                     example: 156516516
-                  Status:
-                    description: |
-                      Статус платежа
-                    type: string
-                    maxLength: 20
-                    example: NEW
                   Success:
                     description: |
                       Выполнение платежа
@@ -108,3 +102,10 @@ paths:
                     description: |
                       Подробное описание ошибки
                     type: string
+                  # DOESN'T USE IN ANDROID SDK  
+                  # Status:
+                  #   description: |
+                  #     Статус платежа
+                  #   type: string
+                  #   maxLength: 20
+                  #   example: NEW

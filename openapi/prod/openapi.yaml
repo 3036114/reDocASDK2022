@@ -59,8 +59,7 @@ paths:
     $ref: ./paths/Link.yaml#/paths/TinkoffPay/transactions@{paymentId}@versions@{version}@link
   /Check3dsVersion:
     $ref: ./paths/Check3dsVersion.yaml#/paths/Check3dsVersion
-  # DOESN'T USE IN ANDROID SDK
-  # '/TinkoffPay/{paymentId}/QR':
-  #   $ref: ./paths/QR.yaml#/paths/TinkoffPay@{paymentId}@QR
-  # /QrMembersList:
-  #   $ref: ./paths/QrMembersList.yaml#/paths/QrMembersList
+  '/TinkoffPay/{paymentId}/QR':
+    $ref: ./paths/QR.yaml#/paths/TinkoffPay@{paymentId}@QR
+  /QrMembersList:
+    $ref: ./paths/QrMembersList.yaml#/paths/QrMembersList 
