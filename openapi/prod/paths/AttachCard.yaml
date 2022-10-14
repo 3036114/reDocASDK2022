@@ -130,3 +130,26 @@ paths:
                     description: |
                       Подробное описание ошибки
                     type: string
+                  ACSUrl:
+                    description: |
+                      Адрес сервера управления доступом, для проверки 3DS
+                      (возвращается в ответе на статус 3DS_CHECKING)
+                    type: string
+                    format: uri
+                    example: https://secure.tcsbank.ru/acs/auth/start.do
+                  MD:
+                    description: |
+                      Уникальный идентификатор транзакции в системе
+                      Банка (возвращается в ответе на статус 3DS_CHECKING)
+                    type: string
+                    example: ACQT-563587431
+                  PaReq:
+                    description: |
+                      Результат аутентификации 3-D Secure (возвращается
+                      в ответе на статус 3DS_CHECKING)
+                    type: string
+                    example: eJxVUl1TwjAQ/CtM30s+KLTDHGHQwsiogFh09C2kp1RpC2nLh7/eBAtqnnYvN3ubvUD/kK4bO9RFkmc9hzWp08BM5XGSvfecRT
+                      RyA6cvIFppxPARVaVRwD0WhXzHRhL3HMUU73itwKVtyl1Pcs8Nli3pymUQK+z2Sww6joDZYI5bAfUgYeY0OZAzNYparWRWCpBqe
+                      zWeiDZnLe3BqSmkqMeh4PRy2p02BfJThkymKCIsSiAnCCqvslIfhXEG5Eyg0muxKstN0SVkv983yyT7zN/emroiQOwlkF8js8qiwogdk
+                      lg8rEfT5WK0jj6G7D4cepNo8TWNBmwSDXtAbAfEskTjkPk0oF6DeV3a6jLj8VQHmVoXglFTqTFs7IjBn4u/BTBZa7OK8yPODPCwyT
+                      M0HSbACwby6/f6xsaoSpNMMN89+uHdV/iUPz2nyat/uxrPXz5nuX/c2nBPTVYxMflwzthJ0hIgVobUeyP1yg469xW+AedOuuM=

@@ -22,13 +22,6 @@ properties:
       * 'Y' - выполнение метода успешно завершено
       * 'N' - выполнение метода завершено неуспешно 
       или метод не выполнялся
-  javaEnabled:
-    type: string
-    description: |
-      Поддерживает ли браузер пользователя Java: 
-      * true
-      * false
-    default: false
   language:
     type: string
     description: |
@@ -36,16 +29,6 @@ properties:
       Рекомендация по получению значения в браузере 
       (из глобального объекта navigator):
       navigator.language
-  colorDepth:
-    type: string
-    description: |
-      Глубина цвета в битах.
-      Допустимые значения:
-      1/4/8/15/16/24/32/48
-      Рекомендация по получению значения в браузере 
-      (из глобального объекта screen):
-      screen.colorDepth
-    default: 48
   timezone:
     type: string
     description: |
@@ -128,3 +111,21 @@ properties:
       * 04 = OOB
       * 05 = HTML Other (valid only for HTML UI)
     example: "01,02,03,04,05"
+  # DOESN'T USE IN ANDROID SDK
+  # colorDepth:
+  #   type: string
+  #   description: |
+  #     Глубина цвета в битах.
+  #     Допустимые значения:
+  #     1/4/8/15/16/24/32/48
+  #     Рекомендация по получению значения в браузере 
+  #     (из глобального объекта screen):
+  #     screen.colorDepth
+  #   default: 48
+  # javaEnabled:
+  #   type: string
+  #   description: |
+  #     Поддерживает ли браузер пользователя Java: 
+  #     * true
+  #     * false
+  #   default: false

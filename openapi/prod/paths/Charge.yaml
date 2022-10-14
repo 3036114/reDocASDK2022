@@ -125,3 +125,8 @@ paths:
                     description: |
                       Подробное описание ошибки
                     type: string
+                  # PARAMS THAT USE IN ANDROID SDK ONLY
+                  CardId:
+                    description: Идентификатор сохраненной карты в системе банка
+                    type: string
+                    example: 881900
