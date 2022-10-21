@@ -68,12 +68,6 @@ paths:
                       Выполнение платежа
                     type: boolean
                     example: true
-                  CustomerKey:
-                    description: |
-                      Идентификатор покупателя в системе Продавца
-                    type: string
-                    maxLength: 36
-                    example: testCustomer1234
                   CardId:
                     description: |
                       Идентификатор карты в системе Банка
@@ -99,3 +93,10 @@ paths:
                     description: |
                       Подробное описание ошибки
                     type: string
+                  # DOESN'T USE IN ANDROID SDK  
+                  # CustomerKey:
+                  #   description: |
+                  #     Идентификатор покупателя в системе Продавца
+                  #   type: string
+                  #   maxLength: 36
+                  #   example: testCustomer1234

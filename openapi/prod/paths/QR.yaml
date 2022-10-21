@@ -1,6 +1,7 @@
 paths:
   TinkoffPay@{paymentId}@QR:
     get:
+      deprecated: true
       tags:
         - Методы оплаты по QR
       summary: QR

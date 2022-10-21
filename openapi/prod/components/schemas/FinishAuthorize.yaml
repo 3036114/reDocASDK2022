@@ -9,7 +9,12 @@ properties:
     type: string
     description: |
       Идентификатор терминала. 
-      Выдается продавцу банком при заведении терминала
+      Выдается продавцу банком при заведении терминала 
+
+      Получает в ответе 1 из 3 статусов платежа:
+      * CONFIRMED - при одностадийной оплате
+      * AUTHORIZED - при двухстадийной оплате
+      * 3DS_CHECKING - при необходимости прохождения проверки 3-DSecure
     example: TinkoffBankTest
   PaymentId:
     type: number
@@ -17,25 +22,6 @@ properties:
       Уникальный идентификатор транзакции в
       системе Банка
     example: 700001702044
-  CardData:
-    type: string
-    description: |
-      Зашифрованные данные карты.
-      Не используется и не является обязательным, 
-      если передается EncryptedPaymentData
-      Пример:
-      eyJzaWduYXR1cmUiOiJNRVVDSVFEdjNJS1A5WG9nWml4RytUUm9zZWFDK0RGd3RKd2FtMHVEcm91RUVGZVB6Z0lnYXBFbHhxQ3AwQWtZcVVmTFVMaVNhUjBKWkVQNmg
-      4THFqYks5YkJKQnM5d1x1MDAzZCIsInByb3RvY29sVmVyc2lvbiI6IkVDdjEiLCJzaWduZWRNZXNzYWdlIjoie1wiZW5jcnlwdGVkTWVzc2FnZVwiOlwiQW11dm5OYUIralBsa3VKTitrMUZLSDZFcm1VK2lTY052
-      L05rR3FFaXIxOHZmSWxkVFJ5L2U4cW5zMXkyanFtcm1acU1JSWNYMUhyTHBxRURpaXkvS3B6SUhNZFllcXRkSVVNOU1tRjNpejU2d2NTZUVVaXU2ODI3QThGcitaYm8xRWtWRjY1TUxRYVY3NlBOUFRndH
-      UvQ1BodW5HUk0rN25KdVhDczVtbkVvOHFma0RNVk8xWktGWDQ4TnVEL2FKcDJQdVVIY2puSnBTZ0pTSDB4U21YSnAzU1MreXFDNm54N254WUEwN2h4YjYvSnp2R2s3ZExDU2hWWGU1Z2haUjNDaFQyV
-      W8rRnpXTWJRRGZtSjBLQW9kc2VlR0xaaitqMzVqOUlKMkhJRFhIUUZZMWNuTW9YVUVoTjgvdEkvRkpqRnJiYVdFRkIzRDZwOFUzT2tkUmVaNHAyYi8yYURNZXVxR1ozSUtjc3R0R2lKMFhQQVhhZXYyQU8
-      o1M3RRQXVqQXRYdFlaekNTVjVBVXdXZS85T1VcXHUwMDNkXCJ9In0=
-  EncryptedPaymentData:
-    type: string
-    description: |
-      Данные карты.
-      Используется и является обязательным только 
-      для ApplePay или GooglePay
   Token:
     type: string
     description: |
@@ -52,36 +38,12 @@ properties:
       Данный формат регламентируется на уровне
       спецификации EMVCo.
     example: 2011:0db8:85a3:0101:0101:8a2e:0370:7334
-  Amount:
-    type: number
-    maxLength: 10
-    description: |
-      Сумма в копейках
-    example: 10000
   SendEmail:
     type: boolean
     description: |
       * true – отправлять клиенту информацию на
       почту об оплате
       * false – не отправлять
-  deviceChannel:
-    type: string
-    description: |
-      Канал устройства.
-      Поддерживается следующий
-      канал устройства:
-      * 01 = Application (APP)
-      * 02 = Browser (BRW)
-  Route:
-    type: string
-    description: |
-      Способ платежа.
-      Является обязательным для Apple Pay или Google Pay.
-    enum: 
-      - ACQ
-      - MC
-      - EINV
-      - WM
   Source:
     type: string
     description: |
@@ -103,17 +65,6 @@ properties:
       - ApplePay
       - GooglePay
     example: YandexPay
-  InfoEmail:
-    type: string
-    format: email
-    description: |
-      Email для отправки информации об оплате.
-      Обязателен при передаче SendEmai
-    example: qwerty@test.com
-  Phone: 
-    type: string
-    description: |
-      Телефон клиента
   DATA:
     type: object
     description: |
@@ -129,3 +80,59 @@ properties:
     oneOf: 
       - type: object
       - $ref: 3DSv2.yaml
+  InfoEmail:
+    type: string
+    format: email
+    description: |
+      Email для отправки информации об оплате.
+      Обязателен при передаче SendEmai
+    example: qwerty@test.com
+  EncryptedPaymentData:
+    type: string
+    description: |
+      Данные карты.
+      Используется и является обязательным только 
+      для ApplePay или GooglePay
+  CardData:
+    type: string
+    description: |
+      Зашифрованные данные карты.
+      Не используется и не является обязательным, 
+      если передается EncryptedPaymentData
+      Пример:
+    example: 
+      eyJzaWduYXR1cmUiOiJNRVVDSVFEdjNJS1A5WG9nWml4RytUUm9zZWFDK0RGd3RKd2FtMHVEcm91RUVGZVB6Z0lnYXBFbHhxQ3AwQWtZcVVmTFVMaVNhUjBKWkVQNmg
+      4THFqYks5YkJKQnM5d1x1MDAzZCIsInByb3RvY29sVmVyc2lvbiI6IkVDdjEiLCJzaWduZWRNZXNzYWdlIjoie1wiZW5jcnlwdGVkTWVzc2FnZVwiOlwiQW11dm5OYUIralBsa3VKTitrMUZLSDZFcm1VK2lTY052
+      L05rR3FFaXIxOHZmSWxkVFJ5L2U4cW5zMXkyanFtcm1acU1JSWNYMUhyTHBxRURpaXkvS3B6SUhNZFllcXRkSVVNOU1tRjNpejU2d2NTZUVVaXU2ODI3QThGcitaYm8xRWtWRjY1TUxRYVY3NlBOUFRndH
+      UvQ1BodW5HUk0rN25KdVhDczVtbkVvOHFma0RNVk8xWktGWDQ4TnVEL2FKcDJQdVVIY2puSnBTZ0pTSDB4U21YSnAzU1MreXFDNm54N254WUEwN2h4YjYvSnp2R2s3ZExDU2hWWGU1Z2haUjNDaFQyV
+      W8rRnpXTWJRRGZtSjBLQW9kc2VlR0xaaitqMzVqOUlKMkhJRFhIUUZZMWNuTW9YVUVoTjgvdEkvRkpqRnJiYVdFRkIzRDZwOFUzT2tkUmVaNHAyYi8yYURNZXVxR1ozSUtjc3R0R2lKMFhQQVhhZXYyQU8
+      o1M3RRQXVqQXRYdFlaekNTVjVBVXdXZS85T1VcXHUwMDNkXCJ9In0=
+  # DOESN'T USE IN ANDROID SDK
+  # Amount:
+  #   type: number
+  #   maxLength: 10
+  #   description: |
+  #     Сумма в копейках
+  #   example: 10000
+  # Phone: 
+  #   type: string
+  #   description: |
+  #     Телефон клиента
+  # deviceChannel:
+  #   type: string
+  #   description: |
+  #     Канал устройства.
+  #     Поддерживается следующий
+  #     канал устройства:
+  #     * 01 = Application (APP)
+  #     * 02 = Browser (BRW)
+  # Route:
+  #   type: string
+  #   description: |
+  #     Способ платежа.
+  #     Является обязательным для Apple Pay или Google Pay.
+  #   enum: 
+  #     - ACQ
+  #     - MC
+  #     - EINV
+  #     - WM

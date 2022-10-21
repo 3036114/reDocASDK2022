@@ -43,15 +43,10 @@ paths:
     $ref: ./paths/GetCardList.yaml#/paths/GetCardList
   /RemoveCard:
     $ref: ./paths/RemoveCard.yaml#/paths/RemoveCard
-  '/TinkoffPay/{paymentId}/QR':
-    $ref: ./paths/QR.yaml#/paths/TinkoffPay@{paymentId}@QR
-    # $ref: ./paths/QR.yaml#/paths/TinkoffPay/{paymentId}/QR
   /GetQr:
     $ref: ./paths/GetQr.yaml#/paths/GetQr 
   /GetStaticQr:
     $ref: ./paths/GetStaticQr.yaml#/paths/GetStaticQr
-  /QrMembersList:
-    $ref: ./paths/QrMembersList.yaml#/paths/QrMembersList
   /GetAddCardState:
     $ref: ./paths/GetAddCardState.yaml#/paths/GetAddCardState
   /SubmitRandomAmount:
@@ -64,3 +59,7 @@ paths:
     $ref: ./paths/Link.yaml#/paths/TinkoffPay/transactions@{paymentId}@versions@{version}@link
   /Check3dsVersion:
     $ref: ./paths/Check3dsVersion.yaml#/paths/Check3dsVersion
+  '/TinkoffPay/{paymentId}/QR':
+    $ref: ./paths/QR.yaml#/paths/TinkoffPay@{paymentId}@QR
+  /QrMembersList:
+    $ref: ./paths/QrMembersList.yaml#/paths/QrMembersList 

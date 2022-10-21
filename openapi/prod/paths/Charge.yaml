@@ -100,7 +100,11 @@ paths:
                     example: true
                   Status:
                     description: |
-                      Статус платежа
+                      Статус платежа 
+                      
+                      Получает в ответе 1 из 2 статусов:
+                      * CONFIRMED - Если платеж выполнен
+                      * REJECTED - Если платеж не выполнен
                     type: string
                     maxLength: 20
                     example: NEW
@@ -125,3 +129,8 @@ paths:
                     description: |
                       Подробное описание ошибки
                     type: string
+                  # PARAMS THAT USE IN ANDROID SDK ONLY
+                  CardId:
+                    description: Идентификатор сохраненной карты в системе банка
+                    type: string
+                    example: 881900
