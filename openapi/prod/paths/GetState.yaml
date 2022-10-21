@@ -16,7 +16,7 @@ paths:
                 - TerminalKey
                 - PaymentId
                 - Token
-              properties: 
+              properties:
                 TerminalKey:
                   description: |
                     Идентификатор терминала. 
